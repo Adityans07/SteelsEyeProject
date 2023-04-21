@@ -1,0 +1,4 @@
+In the given XML file, there were Several parent tags where I needed to retrive the data from the child tags named Id, FullNm, ClssfctnTp, NtnlCcy, CmmdtyDerivInd and Issr. So, to retrive the data from these tags i iterated throgh all the tags named FinInstrm and retrived the data given in its child tags. By using xml.etree.ElementTree I parsed the XML file into a variable named tree and to get the root of the data i.e., BizData I used tree.getroot() function and saved it in a varible named root.
+To iterate through the XML file I used While loop and a variable "m" by incrementing the value of m by 1 per loop, also to get column data except Issr column, I used a variable "i" to iterate throgh the tags and store them in respected variables.
+After this I stored them in rows varible with key value pair.
+At last I stored it in a csv file named company.  
