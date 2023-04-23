@@ -1,15 +1,15 @@
 import unittest
-import logging
+import os
 
+import Aditya_Raj_Data_Engineer
+from Aditya_Raj_Data_Engineer import *
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        Id = "D4568877"
-        self.assertIsNotNone(Id)  # add assertion here
-
-    def isNotNone(self):
-        text = "SomeText"
-        self.assertIsNotNone(text)
+    def test_valid_xml_file(self):
+        file = Aditya_Raj_Data_Engineer.get_root_xml()
+        file_name = "DLTINS_20210117_01of01.xml"
+        root = file.get_xml_root(file_name)
+        self.assertNotEqual(root, None)
 
 
 if __name__ == '__main__':
