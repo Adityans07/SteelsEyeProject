@@ -45,14 +45,17 @@ if __name__=='__main__':
             "NtnlCcy",
             "Issr"]
     rows = []
-
+    # variable to store "Root" of the xml file.
     root = get_root_xml("DLTINS_20210117_01of01.xml")
-    # Initializing variable m for iteration of FinInstrm tags
+
     try:
+        # Initializing variable m for iteration of FinInstrm tags
         m = 1
+        # while loop to iterate through all fininstrm tags.
         while(m<len(root[1][0][0])):
             # Initializing variable i for iteration to find column datas
             i = 0
+            # loop to loop into FinInstrmGnlAttrbts tags to get header files.
             while i<6:
                 if i == 0:
                     Id = root[1][0][0][m][0][0][i].text
@@ -65,6 +68,7 @@ if __name__=='__main__':
                 elif i == 5:
                     CmmdtyDerivInd = root[1][0][0][m][0][0][i].text
                 i += 1         # Increment i
+            # To get issr tag text
             Issr = root[1][0][0][m][0][1].text
             rows.append({"Id":Id,"FullNm":FullNm,
                          "ClssfctnTp":ClssfctnTp,
@@ -77,4 +81,3 @@ if __name__=='__main__':
         error = f"{str(e)} {traceback.format_exc()}"
         logging.error(msg=error)
     df = xml_to_csv(rows=rows,cols=cols)
-    df.head()

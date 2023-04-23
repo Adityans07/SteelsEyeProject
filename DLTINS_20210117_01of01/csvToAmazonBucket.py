@@ -1,4 +1,4 @@
-import boto3  # pip install boto3
+import boto3
 access_key = 'AKIAXX5B6JMUHJKCPXEC'
 bucket_name = 'steelseye'
 secret_access_key = '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'
@@ -21,12 +21,15 @@ def upload_to_aws(local_file, bucket, s3_file):
                       aws_secret_access_key=secret_access_key)
 
     try:
+        # Uploading the csv file to our bucket
         s3.upload_file(local_file, bucket, s3_file)
         logging.info("Upload Successful")
         return True
+    # exception if file is not there.
     except FileNotFoundError:
         logging.error("The file was not found")
         return False
+    # Exception if credentials are incorrect.
     except NoCredentialsError:
         logging.warning("Credentials not available")
         return False
