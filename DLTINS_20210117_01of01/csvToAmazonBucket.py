@@ -1,3 +1,6 @@
+"""
+@author : Aditya Raj
+"""
 import boto3
 access_key = 'AKIAXX5B6JMUHJKCPXEC'
 bucket_name = 'steelseye'
